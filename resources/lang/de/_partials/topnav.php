@@ -5,4 +5,6 @@ return [
     'games' => 'Spiele',
     'developers' => 'Entwickler',
     'resources' => 'Ressourcen',
+    'register' => 'Registrieren',
+    'login' => 'Login',
 ];

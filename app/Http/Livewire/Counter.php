@@ -12,9 +12,14 @@ class Counter extends Component
     public $text;
     public $picture;
 
-    public function increment(){
-        $user = User::all()->first()->name;
-        $this->count = $user;
+    public function counter(){
+        if(\Auth::check()){
+            $user = User::all()->first()->name;
+            $this->count = $user;
+        }else{
+            $this->count = "Nicht eingeloggt";
+        }
+
 
         $this->picture = random_int(1,9);
 

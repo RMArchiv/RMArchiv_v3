@@ -1,13 +1,11 @@
-
-
-<div class="max-w-sm rounded overflow-hidden shadow-lg bg-rm-blue-dark border-rm-blue">
+<div wire:init="counter" class="max-w-sm rounded overflow-hidden shadow-lg bg-rm-blue-dark border-rm-blue">
     <img class="w-full" src="https://www.rmarchiv.de/games/1653/screenshot/show/{{ $picture }}" alt="Mountain">
     <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">Name: {{ $count }}</div>
         <p class="text-base">
             {{ $text }}
             <br>
-            <button class="text-rm-href hover:text-rm-href-hover" wire:click="increment">+</button>
+            <button class="text-rm-href hover:text-rm-href-hover" wire:click="counter">+</button>
         </p>
     </div>
     <div class="px-6 pt-4 pb-2 mt-2">
