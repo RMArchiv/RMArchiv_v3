@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('title', __('auth/register.register'))
 @section('content')
 

@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('title', 'Home')
 @section('content')
     <div class="grid grid-cols-12 gap-2">
@@ -12,6 +12,4 @@
             <livewire:counter />
         </div>
     </div>
-
-
 @endsection

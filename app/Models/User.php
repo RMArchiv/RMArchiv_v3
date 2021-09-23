@@ -1,108 +1,61 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
-use Carbon\Carbon;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Jetstream\HasTeams;
+use Laravel\Sanctum\HasApiTokens;
 
-/**
- * Class User
- *
- * @property int $id
- * @property string $name
- * @property string $email
- * @property Carbon|null $email_verified_at
- * @property string $password
- * @property string|null $two_factor_secret
- * @property string|null $two_factor_recovery_codes
- * @property string|null $remember_token
- * @property int|null $current_team_id
- * @property string|null $profile_photo_path
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- *
- * @package App\Models
- */
-class User extends Model implements Authenticatable
+class User extends Authenticatable
 {
-	protected $table = 'users';
-
-	protected $casts = [
-		'current_team_id' => 'int'
-	];
-
-	protected $dates = [
-		'email_verified_at'
-	];
-
-	protected $hidden = [
-		'password',
-		'two_factor_secret',
-		'remember_token'
-	];
-
-	protected $fillable = [
-		'name',
-		'email',
-		'email_verified_at',
-		'password',
-		'two_factor_secret',
-		'two_factor_recovery_codes',
-		'remember_token',
-		'current_team_id',
-		'profile_photo_path'
-	];
+    use HasApiTokens;
+    use HasFactory;
+    use HasProfilePhoto;
+    use HasTeams;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
 
     /**
-     * Get the password for the user.
+     * The attributes that are mass assignable.
      *
-     * @return string
+     * @var string[]
      */
-    public function getAuthPassword()
-    {
-    }
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
 
     /**
-     * Get the token value for the "remember me" session.
+     * The attributes that should be hidden for serialization.
      *
-     * @return string
+     * @var array
      */
-    public function getRememberToken()
-    {
-    }
+    protected $hidden = [
+        'password',
+        'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
+    ];
 
     /**
-     * Set the token value for the "remember me" session.
+     * The attributes that should be cast.
      *
-     * @param string $value
-     *
-     * @return void
+     * @var array
      */
-    public function setRememberToken($value)
-    {
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
     /**
-     * Get the column name for the "remember me" token.
+     * The accessors to append to the model's array form.
      *
-     * @return string
+     * @var array
      */
-    public function getRememberTokenName()
-    {
-    }
-
-    public function getAuthIdentifierName()
-    {
-        // TODO: Implement getAuthIdentifierName() method.
-    }
-
-    public function getAuthIdentifier()
-    {
-        // TODO: Implement getAuthIdentifier() method.
-    }
+    protected $appends = [
+        'profile_photo_url',
+    ];
 }

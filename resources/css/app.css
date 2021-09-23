@@ -2,16 +2,3 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.c-card {
-    img {
-        transition: transform .3s ease-in-out;
-    }
-
-    &:hover {
-        img {
-            transform: scale(1.05);
-        }
-     }
-}
-
-

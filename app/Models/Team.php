@@ -1,46 +1,44 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Jetstream\Events\TeamCreated;
+use Laravel\Jetstream\Events\TeamDeleted;
+use Laravel\Jetstream\Events\TeamUpdated;
+use Laravel\Jetstream\Team as JetstreamTeam;
 
-/**
- * Class Team
- * 
- * @property int $id
- * @property int $user_id
- * @property string $name
- * @property bool $personal_team
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * 
- * @property Collection|TeamInvitation[] $team_invitations
- *
- * @package App\Models
- */
-class Team extends Model
+class Team extends JetstreamTeam
 {
-	protected $table = 'teams';
+    use HasFactory;
 
-	protected $casts = [
-		'user_id' => 'int',
-		'personal_team' => 'bool'
-	];
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'personal_team' => 'boolean',
+    ];
 
-	protected $fillable = [
-		'user_id',
-		'name',
-		'personal_team'
-	];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'name',
+        'personal_team',
+    ];
 
-	public function team_invitations()
-	{
-		return $this->hasMany(TeamInvitation::class);
-	}
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => TeamCreated::class,
+        'updated' => TeamUpdated::class,
+        'deleted' => TeamDeleted::class,
+    ];
 }

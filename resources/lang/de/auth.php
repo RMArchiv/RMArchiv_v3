@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Dieser Login existiert nicht.',
+    'failed' => 'Login fehlgeschlagen.',
     'password' => 'Das angegebene Passwort ist nicht korrekt.',
     'throttle' => 'Zu viele fehlgeschlagene Loginversuche. Bitte warte :seconds Sekunden für den nächsten Versuch.',
 

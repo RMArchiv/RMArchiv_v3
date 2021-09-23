@@ -1,44 +1,29 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
+use Laravel\Jetstream\Jetstream;
+use Laravel\Jetstream\TeamInvitation as JetstreamTeamInvitation;
 
-/**
- * Class TeamInvitation
- * 
- * @property int $id
- * @property int $team_id
- * @property string $email
- * @property string|null $role
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * 
- * @property Team $team
- *
- * @package App\Models
- */
-class TeamInvitation extends Model
+class TeamInvitation extends JetstreamTeamInvitation
 {
-	protected $table = 'team_invitations';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'email',
+        'role',
+    ];
 
-	protected $casts = [
-		'team_id' => 'int'
-	];
-
-	protected $fillable = [
-		'team_id',
-		'email',
-		'role'
-	];
-
-	public function team()
-	{
-		return $this->belongsTo(Team::class);
-	}
+    /**
+     * Get the team that the invitation belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function team()
+    {
+        return $this->belongsTo(Jetstream::teamModel());
+    }
 }

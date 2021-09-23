@@ -1222,14 +1222,14 @@ select {
 .mb-2 {
 	margin-bottom: 0.5rem;
 }
+.mt-0 {
+	margin-top: 0px;
+}
 .-mt-px {
 	margin-top: -1px;
 }
 .mb-8 {
 	margin-bottom: 2rem;
-}
-.mt-0 {
-	margin-top: 0px;
 }
 .block {
 	display: block;
@@ -1731,11 +1731,11 @@ select {
 .pb-2 {
 	padding-bottom: 0.5rem;
 }
-.pt-8 {
-	padding-top: 2rem;
-}
 .pl-4 {
 	padding-left: 1rem;
+}
+.pt-8 {
+	padding-top: 2rem;
 }
 .text-left {
 	text-align: left;
@@ -1985,17 +1985,6 @@ select {
 }
 .ease-in {
 	transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-}
-.c-card {
-    img {
-        transition: transform .3s ease-in-out;
-    }
-
-    &:hover {
-        img {
-            transform: scale(1.05);
-        }
-     }
 }
 .hover\:border-gray-300:hover {
 	--tw-border-opacity: 1;
@@ -2449,6 +2438,5 @@ select {
 		padding-right: 2rem;
 	}
 }
-
 
 

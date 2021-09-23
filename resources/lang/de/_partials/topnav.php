@@ -7,4 +7,7 @@ return [
     'resources' => 'Ressourcen',
     'register' => 'Registrieren',
     'login' => 'Login',
+    'logout' => 'Logout',
+    'profile' => 'Profil',
+    'manage_account' => 'Accountoptionen'
 ];
