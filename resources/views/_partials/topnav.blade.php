@@ -57,7 +57,7 @@
 
                                 <x-slot name="content">
                                     <!-- Account Management -->
-                                    <div class="block px-4 py-2 text-xs text-rm-color bg-rm-back">
+                                    <div class="block px-4 py-2 text-xs text-rm-color">
                                         {{ __('_partials/topnav.manage_account') }}
                                     </div>
 

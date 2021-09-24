@@ -281,6 +281,14 @@ return [
 
         'except' => [
             'migrations',
+            'teams',
+            'users',
+            'team_user',
+            'team_invitations',
+            'sessions',
+            'personal_access_tokens',
+            'password_resets',
+            'failed_jobs',
         ],
 
         /*
@@ -416,7 +424,7 @@ return [
         |--------------------------------------------------------------------------
         | Move $fillable property to base files
         |--------------------------------------------------------------------------
-        | When base_files is true you can set fillable_in_base_files to true 
+        | When base_files is true you can set fillable_in_base_files to true
         | if you want the $fillable to be generated in base files
         |
         */
