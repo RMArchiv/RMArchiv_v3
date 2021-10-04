@@ -19,15 +19,7 @@
     </head>
     <body class="font-sans antialiased bg-rm-back text-rm-color">
         <!-- Header -->
-        <div class="w-full m-0 p-0 bg-cover bg-bottom">
-            <div class="container max-w-4xl mx-auto pt-16 md:pt-16 text-center break-normal">
-                <!--Title-->
-                <p class="text-white font-extrabold text-3xl md:text-5xl">
-                    {{ config('app.name') }}
-                </p>
-                <p class="text-xl md:text-2xl text-gray-500">{{ config('app.version') }}</p>
-            </div>
-        </div>
+        <livewire:random-header />
         <div class="container px-4 md:px-0 max-w-6xl mx-auto -mt-32 pt-32">
             <div class="mx-0 sm:mx-6">
                 @include('_partials.topnav')

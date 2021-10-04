@@ -17,7 +17,7 @@ class AddLogoVotesTable extends Migration
             $table->id();
             $table->integer('logo_id');
             $table->integer('user_id');
-            $table->integer('vote_value');
+            $table->integer('vote_value')->default(0);
             $table->timestamps();
         });
     }

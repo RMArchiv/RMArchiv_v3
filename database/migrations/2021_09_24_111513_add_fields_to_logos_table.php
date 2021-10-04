@@ -14,8 +14,8 @@ class AddFieldsToLogosTable extends Migration
     public function up()
     {
         Schema::table('logos', function (Blueprint $table) {
-            $table->integer('votes_count');
-            $table->integer('votes_value');
+            $table->integer('votes_count')->default(0);
+            $table->integer('votes_value')->default(0);
         });
     }
 

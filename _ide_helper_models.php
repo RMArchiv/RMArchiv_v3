@@ -38,6 +38,60 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * Class Logo
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $mimetype
+ * @property string $filepath
+ * @property int $user_id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property int $votes_count
+ * @property int $votes_value
+ * @package App\Models
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo whereFilepath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo whereMimetype($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo whereVotesCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Logo whereVotesValue($value)
+ */
+	class Logo extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * Class LogoVote
+ *
+ * @property int $id
+ * @property int $logo_id
+ * @property int $user_id
+ * @property int $vote_value
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @package App\Models
+ * @method static \Illuminate\Database\Eloquent\Builder|LogoVote newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LogoVote newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LogoVote query()
+ * @method static \Illuminate\Database\Eloquent\Builder|LogoVote whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LogoVote whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LogoVote whereLogoId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LogoVote whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LogoVote whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LogoVote whereVoteValue($value)
+ */
+	class LogoVote extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Membership
  *
  * @property int $id
@@ -133,17 +187,20 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * Class Team
+ * App\Models\Team
  *
  * @property int $id
  * @property int $user_id
  * @property string $name
  * @property bool $personal_team
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property Collection|TeamInvitation[] $team_invitations
- * @package App\Models
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $owner
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\TeamInvitation[] $teamInvitations
  * @property-read int|null $team_invitations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
+ * @method static \Database\Factories\TeamFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Team newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Team newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Team query()
@@ -159,16 +216,15 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * Class TeamInvitation
+ * App\Models\TeamInvitation
  *
  * @property int $id
  * @property int $team_id
  * @property string $email
  * @property string|null $role
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property Team $team
- * @package App\Models
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Team $team
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation query()
@@ -208,21 +264,31 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * Class User
+ * App\Models\User
  *
  * @property int $id
  * @property string $name
  * @property string $email
- * @property Carbon|null $email_verified_at
+ * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $two_factor_secret
  * @property string|null $two_factor_recovery_codes
  * @property string|null $remember_token
  * @property int|null $current_team_id
  * @property string|null $profile_photo_path
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @package App\Models
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Team|null $currentTeam
+ * @property-read string $profile_photo_url
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Team[] $ownedTeams
+ * @property-read int|null $owned_teams_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Team[] $teams
+ * @property-read int|null $teams_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
+ * @property-read int|null $tokens_count
+ * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
